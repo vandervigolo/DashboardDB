@@ -9,6 +9,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @SpringBootApplication
 public class DashboardDbApplication {
@@ -28,5 +30,15 @@ public class DashboardDbApplication {
 		srb.setUrlMappings(Arrays.asList("*.jsp"));
 		srb.setLoadOnStartup(1);
 		return srb;
+	  }
+	
+	@Bean
+	  public ViewResolver viewResolver() {
+	    InternalResourceViewResolver irv = new InternalResourceViewResolver();
+	    irv.setPrefix("/WEB-INF/views/jsp/");
+	    irv.setSuffix(".jsp");
+
+	    return irv;
+
 	  }
 }
