@@ -9,16 +9,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Index;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "pessoa", schema = "dashboarddb", indexes = {
-		@Index(name = "ixPessoa_Nome", columnList = "nome"),
+@Table(schema = "dashboarddb", name = "pessoa", indexes = { @Index(name = "ixPessoa_Nome", columnList = "nome"),
 		@Index(name = "ixPessoa_Endereco", columnList = "endereco"),
 		@Index(name = "ixPessoa_Email", columnList = "email", unique = true),
-		@Index(name = "IxPessoa_Ativo", columnList = "ativo")
-})
+		@Index(name = "IxPessoa_Ativo", columnList = "ativo") })
 @SequenceGenerator(name = "seq_pessoa", sequenceName = "seq_pessoa", schema = "dashboarddb", initialValue = 1, allocationSize = 1)
 public class Pessoa implements Serializable {
 
@@ -42,6 +41,9 @@ public class Pessoa implements Serializable {
 
 	@Column(name = "ativo", columnDefinition = "boolean not null default false")
 	private Boolean ativo;
+
+	@OneToOne(mappedBy = "pessoa")
+	private Usuario usuario;
 
 	public Long getId() {
 		return id;
@@ -91,6 +93,14 @@ public class Pessoa implements Serializable {
 		this.ativo = ativo;
 	}
 
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -101,6 +111,7 @@ public class Pessoa implements Serializable {
 		result = prime * result + ((endereco == null) ? 0 : endereco.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result + ((usuario == null) ? 0 : usuario.hashCode());
 		return result;
 	}
 
@@ -143,12 +154,18 @@ public class Pessoa implements Serializable {
 				return false;
 		} else if (!nome.equals(other.nome))
 			return false;
+		if (usuario == null) {
+			if (other.usuario != null)
+				return false;
+		} else if (!usuario.equals(other.usuario))
+			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
 		return "Pessoa [id=" + id + ", nome=" + nome + ", endereco=" + endereco + ", email=" + email + ", dataCadastro="
-				+ dataCadastro + ", ativo=" + ativo + "]";
+				+ dataCadastro + ", ativo=" + ativo + ", usuario=" + usuario + "]";
 	}
+
 }
