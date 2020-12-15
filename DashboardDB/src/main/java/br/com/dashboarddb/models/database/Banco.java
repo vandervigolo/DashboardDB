@@ -16,7 +16,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(schema = "dashboarddb", name = "conexao", indexes = { @Index(name = "ixBanco_RDMBS", columnList = "id_rdbms") })
+@Table(schema = "dashboarddb", name = "banco", indexes = { @Index(name = "ixBanco_RDMBS", columnList = "id_rdbms") })
 @SequenceGenerator(schema = "dashboarddb", name = "seq_banco", sequenceName = "seq_banco", initialValue = 1, allocationSize = 1)
 public class Banco implements Serializable {
 

@@ -40,10 +40,10 @@ public class Agendamento implements Serializable {
 	@Column(name = "cron", nullable = false)
 	private String cron;
 
-	@Column(name = "ultimaExecucao", nullable = false)
+	@Column(name = "ultima_execucao", nullable = false)
 	private LocalDateTime ultimaExecucao;
 
-	@Column(name = "proximaExecucao", nullable = false)
+	@Column(name = "proxima_execucao", nullable = false)
 	private LocalDateTime proximaExecucao;
 
 	public Long getId() {

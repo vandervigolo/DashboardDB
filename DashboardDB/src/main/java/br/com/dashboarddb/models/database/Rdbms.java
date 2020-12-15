@@ -11,7 +11,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(schema = "dashboarddb", name = "agendamento", indexes = {})
+@Table(schema = "dashboarddb", name = "rdbms")
 @SequenceGenerator(schema = "dashboarddb", name = "seq_rdbms", sequenceName = "seq_rdbms", initialValue = 1, allocationSize = 1)
 public class Rdbms implements Serializable {
 
