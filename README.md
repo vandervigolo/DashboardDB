@@ -6,7 +6,7 @@
 ```Bash
 $ psql
 ```
-2. Crie um usuario para o aplicativo DashboardDB, juntamente com a senha que será utilizada para acesso:
+2. Crie um usuario para o aplicativo DashboardDB, juntamente com a senha que será utilizada para acesso. Estas credenciais devem ser informadas no arquivo application.properties:
 ```Bash
 postgres=# CREATE ROLE dashboarddb WITH LOGIN PASSWORD 'dashboarddb';
 ```
