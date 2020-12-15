@@ -18,8 +18,8 @@ import javax.persistence.Table;
 @Entity
 @Table(schema = "dashboarddb", name = "conexao", indexes = {
 		@Index(name = "ixConexao_Usuario", columnList = "id_usuario"),
-		@Index(name = "ixConexao_Ativo", columnList = "ativo")
-})
+		@Index(name = "ixConexao_Banco", columnList = "id_banco"),
+		@Index(name = "ixConexao_Ativo", columnList = "ativo") })
 @SequenceGenerator(schema = "dashboarddb", name = "seq_conexao", sequenceName = "seq_conexao", initialValue = 1, allocationSize = 1)
 public class Conexao implements Serializable {
 
@@ -36,17 +36,18 @@ public class Conexao implements Serializable {
 	@JoinColumn(name = "id_usuario", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fkConexao_Usuario"))
 	private Usuario usuario_cadastro;
 
-	@Column(name = "driver", nullable = false)
-	private String driver;
-
-	@Column(name = "url", nullable = false)
-	private String url;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_banco", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fkConexao_Banco"))
+	private Banco banco;
 
 	@Column(name = "usuario_conexao", nullable = false)
 	private String usuario_conexao;
 
 	@Column(name = "senha_conexao", nullable = false)
 	private String senha_conexao;
+
+	@Column(name = "somente_leitura", columnDefinition = "boolean not null default true")
+	private Boolean somenteLeitura;
 
 	@Column(name = "ativo", columnDefinition = "boolean not null default false")
 	private Boolean ativo;
@@ -75,20 +76,12 @@ public class Conexao implements Serializable {
 		this.usuario_cadastro = usuario_cadastro;
 	}
 
-	public String getDriver() {
-		return driver;
+	public Banco getBanco() {
+		return banco;
 	}
 
-	public void setDriver(String driver) {
-		this.driver = driver;
-	}
-
-	public String getUrl() {
-		return url;
-	}
-
-	public void setUrl(String url) {
-		this.url = url;
+	public void setBanco(Banco banco) {
+		this.banco = banco;
 	}
 
 	public String getUsuario_conexao() {
@@ -107,6 +100,14 @@ public class Conexao implements Serializable {
 		this.senha_conexao = senha_conexao;
 	}
 
+	public Boolean getSomenteLeitura() {
+		return somenteLeitura;
+	}
+
+	public void setSomenteLeitura(Boolean somenteLeitura) {
+		this.somenteLeitura = somenteLeitura;
+	}
+
 	public Boolean getAtivo() {
 		return ativo;
 	}
@@ -120,11 +121,11 @@ public class Conexao implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((ativo == null) ? 0 : ativo.hashCode());
-		result = prime * result + ((driver == null) ? 0 : driver.hashCode());
+		result = prime * result + ((banco == null) ? 0 : banco.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		result = prime * result + ((senha_conexao == null) ? 0 : senha_conexao.hashCode());
-		result = prime * result + ((url == null) ? 0 : url.hashCode());
+		result = prime * result + ((somenteLeitura == null) ? 0 : somenteLeitura.hashCode());
 		result = prime * result + ((usuario_cadastro == null) ? 0 : usuario_cadastro.hashCode());
 		result = prime * result + ((usuario_conexao == null) ? 0 : usuario_conexao.hashCode());
 		return result;
@@ -144,10 +145,10 @@ public class Conexao implements Serializable {
 				return false;
 		} else if (!ativo.equals(other.ativo))
 			return false;
-		if (driver == null) {
-			if (other.driver != null)
+		if (banco == null) {
+			if (other.banco != null)
 				return false;
-		} else if (!driver.equals(other.driver))
+		} else if (!banco.equals(other.banco))
 			return false;
 		if (id == null) {
 			if (other.id != null)
@@ -164,10 +165,10 @@ public class Conexao implements Serializable {
 				return false;
 		} else if (!senha_conexao.equals(other.senha_conexao))
 			return false;
-		if (url == null) {
-			if (other.url != null)
+		if (somenteLeitura == null) {
+			if (other.somenteLeitura != null)
 				return false;
-		} else if (!url.equals(other.url))
+		} else if (!somenteLeitura.equals(other.somenteLeitura))
 			return false;
 		if (usuario_cadastro == null) {
 			if (other.usuario_cadastro != null)
@@ -184,9 +185,9 @@ public class Conexao implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Conexao [id=" + id + ", nome=" + nome + ", usuario_cadastro=" + usuario_cadastro + ", driver=" + driver
-				+ ", url=" + url + ", usuario_conexao=" + usuario_conexao + ", senha_conexao=" + senha_conexao
-				+ ", ativo=" + ativo + "]";
+		return "Conexao [id=" + id + ", nome=" + nome + ", usuario_cadastro=" + usuario_cadastro + ", banco=" + banco
+				+ ", usuario_conexao=" + usuario_conexao + ", senha_conexao=" + senha_conexao + ", somenteLeitura="
+				+ somenteLeitura + ", ativo=" + ativo + "]";
 	}
 
 }

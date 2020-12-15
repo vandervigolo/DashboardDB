@@ -15,25 +15,24 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(schema = "dashboarddb", name = "conexao_query", indexes = {
-		@Index(name = "ixConexaoQuery_Conexao", columnList = "id_conexao"),
-		@Index(name = "ixConexaoQuery_Query", columnList = "id_query") })
-@SequenceGenerator(name = "seq_conexao_query", sequenceName = "seq_conexao_query", schema = "dashboarddb", initialValue = 1, allocationSize = 1)
-public class ConexaoQuery implements Serializable {
+@Table(schema = "dashboarddb", name = "query_banco", indexes = {
+		@Index(name = "ixQueryBanco_Query_Banco", columnList = "id_query, id_banco", unique = true) })
+@SequenceGenerator(name = "seq_query_banco", sequenceName = "seq_query_banco", schema = "dashboarddb", initialValue = 1, allocationSize = 1)
+public class QueryBanco implements Serializable {
 
-	private static final long serialVersionUID = -3037984545881855972L;
+	private static final long serialVersionUID = -3514490023452452175L;
 
 	@Id
-	@GeneratedValue(generator = "seq_conexao_query", strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(generator = "seq_query_banco", strategy = GenerationType.SEQUENCE)
 	private Long id;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "id_conexao", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fkConexaoQuery_Conexao"))
-	private Conexao conexao;
+	@JoinColumn(name = "id_query", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fkQueryBanco_Query"))
+	private Query query;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "id_query", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fkConexaoQuery_Query"))
-	private Query query;
+	@JoinColumn(name = "id_banco", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fkQueryBanco_Banco"))
+	private Banco banco;
 
 	public Long getId() {
 		return id;
@@ -41,14 +40,6 @@ public class ConexaoQuery implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public Conexao getConexao() {
-		return conexao;
-	}
-
-	public void setConexao(Conexao conexao) {
-		this.conexao = conexao;
 	}
 
 	public Query getQuery() {
@@ -59,11 +50,19 @@ public class ConexaoQuery implements Serializable {
 		this.query = query;
 	}
 
+	public Banco getBanco() {
+		return banco;
+	}
+
+	public void setBanco(Banco banco) {
+		this.banco = banco;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((conexao == null) ? 0 : conexao.hashCode());
+		result = prime * result + ((banco == null) ? 0 : banco.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((query == null) ? 0 : query.hashCode());
 		return result;
@@ -77,11 +76,11 @@ public class ConexaoQuery implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ConexaoQuery other = (ConexaoQuery) obj;
-		if (conexao == null) {
-			if (other.conexao != null)
+		QueryBanco other = (QueryBanco) obj;
+		if (banco == null) {
+			if (other.banco != null)
 				return false;
-		} else if (!conexao.equals(other.conexao))
+		} else if (!banco.equals(other.banco))
 			return false;
 		if (id == null) {
 			if (other.id != null)
@@ -98,6 +97,7 @@ public class ConexaoQuery implements Serializable {
 
 	@Override
 	public String toString() {
-		return "ConexaoQuery [id=" + id + ", conexao=" + conexao + ", query=" + query + "]";
+		return "QueryBanco [id=" + id + ", query=" + query + ", banco=" + banco + "]";
 	}
+
 }

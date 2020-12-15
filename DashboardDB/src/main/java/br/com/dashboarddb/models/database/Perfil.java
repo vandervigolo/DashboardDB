@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(schema = "dashboarddb", name = "perfil", indexes = {
-		@Index(name = "ixPerfil_nome", columnList = "nome", unique = true),
+		@Index(name = "ixPerfil_Nome", columnList = "nome", unique = true),
 		@Index(name = "ixPerfil_Ativo", columnList = "ativo")
 })
 @SequenceGenerator(schema = "dashboarddb", name = "seq_perfil", sequenceName = "seq_perfil", initialValue = 1, allocationSize = 1)

@@ -14,10 +14,12 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(schema = "dashboarddb", name = "pessoa", indexes = { @Index(name = "ixPessoa_Nome", columnList = "nome"),
+@Table(schema = "dashboarddb", name = "pessoa", indexes = { 
+		@Index(name = "ixPessoa_Nome", columnList = "nome"),
 		@Index(name = "ixPessoa_Endereco", columnList = "endereco"),
 		@Index(name = "ixPessoa_Email", columnList = "email", unique = true),
-		@Index(name = "IxPessoa_Ativo", columnList = "ativo") })
+		@Index(name = "IxPessoa_Ativo", columnList = "ativo") 
+})
 @SequenceGenerator(name = "seq_pessoa", sequenceName = "seq_pessoa", schema = "dashboarddb", initialValue = 1, allocationSize = 1)
 public class Pessoa implements Serializable {
 

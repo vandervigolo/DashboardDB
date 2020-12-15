@@ -42,7 +42,7 @@ public class RegistroExecucao implements Serializable {
 	@Column(name = "data_hora_execucao", nullable = false)
 	private LocalDateTime dataHoraExecucao;
 
-	@Column(name = "ativo", columnDefinition = "boolean not null default false")
+	@Column(name = "sucesso", columnDefinition = "boolean not null default false")
 	private Boolean sucesso;
 
 	@Column(name = "resultado", columnDefinition = "TEXT", nullable = false)
