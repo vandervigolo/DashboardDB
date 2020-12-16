@@ -18,7 +18,6 @@ import javax.persistence.Table;
 @Entity
 @Table(schema = "dashboarddb", name = "conexao", indexes = {
 		@Index(name = "ixConexao_Usuario", columnList = "id_usuario"),
-		@Index(name = "ixConexao_Banco", columnList = "id_banco"),
 		@Index(name = "ixConexao_Ativo", columnList = "ativo") })
 @SequenceGenerator(schema = "dashboarddb", name = "seq_conexao", sequenceName = "seq_conexao", initialValue = 1, allocationSize = 1)
 public class Conexao implements Serializable {
@@ -32,19 +31,33 @@ public class Conexao implements Serializable {
 	@Column(name = "nome", nullable = false)
 	private String nome;
 
+	@Column(name = "descricao", nullable = false)
+	private String descricao;
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_usuario", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fkConexao_Usuario"))
 	private Usuario usuario_cadastro;
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "id_banco", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fkConexao_Banco"))
-	private Banco banco;
+	@Column(name = "endereco", nullable = false)
+	private String endereco;
+
+	@Column(name = "database", nullable = false)
+	private String database;
 
 	@Column(name = "usuario_conexao", nullable = false)
 	private String usuario_conexao;
 
 	@Column(name = "senha_conexao", nullable = false)
 	private String senha_conexao;
+
+	@Column(name = "fabricante", nullable = false)
+	private String fabricante;
+
+	@Column(name = "versao", nullable = false)
+	private String versao;
+
+	@Column(name = "driver", nullable = false)
+	private String driver;
 
 	@Column(name = "somente_leitura", columnDefinition = "boolean not null default true")
 	private Boolean somenteLeitura;
@@ -68,6 +81,14 @@ public class Conexao implements Serializable {
 		this.nome = nome;
 	}
 
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
 	public Usuario getUsuario_cadastro() {
 		return usuario_cadastro;
 	}
@@ -76,12 +97,20 @@ public class Conexao implements Serializable {
 		this.usuario_cadastro = usuario_cadastro;
 	}
 
-	public Banco getBanco() {
-		return banco;
+	public String getEndereco() {
+		return endereco;
 	}
 
-	public void setBanco(Banco banco) {
-		this.banco = banco;
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+
+	public String getDatabase() {
+		return database;
+	}
+
+	public void setDatabase(String database) {
+		this.database = database;
 	}
 
 	public String getUsuario_conexao() {
@@ -98,6 +127,30 @@ public class Conexao implements Serializable {
 
 	public void setSenha_conexao(String senha_conexao) {
 		this.senha_conexao = senha_conexao;
+	}
+
+	public String getFabricante() {
+		return fabricante;
+	}
+
+	public void setFabricante(String fabricante) {
+		this.fabricante = fabricante;
+	}
+
+	public String getVersao() {
+		return versao;
+	}
+
+	public void setVersao(String versao) {
+		this.versao = versao;
+	}
+
+	public String getDriver() {
+		return driver;
+	}
+
+	public void setDriver(String driver) {
+		this.driver = driver;
 	}
 
 	public Boolean getSomenteLeitura() {
@@ -121,13 +174,18 @@ public class Conexao implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((ativo == null) ? 0 : ativo.hashCode());
-		result = prime * result + ((banco == null) ? 0 : banco.hashCode());
+		result = prime * result + ((database == null) ? 0 : database.hashCode());
+		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
+		result = prime * result + ((driver == null) ? 0 : driver.hashCode());
+		result = prime * result + ((endereco == null) ? 0 : endereco.hashCode());
+		result = prime * result + ((fabricante == null) ? 0 : fabricante.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		result = prime * result + ((senha_conexao == null) ? 0 : senha_conexao.hashCode());
 		result = prime * result + ((somenteLeitura == null) ? 0 : somenteLeitura.hashCode());
 		result = prime * result + ((usuario_cadastro == null) ? 0 : usuario_cadastro.hashCode());
 		result = prime * result + ((usuario_conexao == null) ? 0 : usuario_conexao.hashCode());
+		result = prime * result + ((versao == null) ? 0 : versao.hashCode());
 		return result;
 	}
 
@@ -145,10 +203,30 @@ public class Conexao implements Serializable {
 				return false;
 		} else if (!ativo.equals(other.ativo))
 			return false;
-		if (banco == null) {
-			if (other.banco != null)
+		if (database == null) {
+			if (other.database != null)
 				return false;
-		} else if (!banco.equals(other.banco))
+		} else if (!database.equals(other.database))
+			return false;
+		if (descricao == null) {
+			if (other.descricao != null)
+				return false;
+		} else if (!descricao.equals(other.descricao))
+			return false;
+		if (driver == null) {
+			if (other.driver != null)
+				return false;
+		} else if (!driver.equals(other.driver))
+			return false;
+		if (endereco == null) {
+			if (other.endereco != null)
+				return false;
+		} else if (!endereco.equals(other.endereco))
+			return false;
+		if (fabricante == null) {
+			if (other.fabricante != null)
+				return false;
+		} else if (!fabricante.equals(other.fabricante))
 			return false;
 		if (id == null) {
 			if (other.id != null)
@@ -180,14 +258,20 @@ public class Conexao implements Serializable {
 				return false;
 		} else if (!usuario_conexao.equals(other.usuario_conexao))
 			return false;
+		if (versao == null) {
+			if (other.versao != null)
+				return false;
+		} else if (!versao.equals(other.versao))
+			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Conexao [id=" + id + ", nome=" + nome + ", usuario_cadastro=" + usuario_cadastro + ", banco=" + banco
-				+ ", usuario_conexao=" + usuario_conexao + ", senha_conexao=" + senha_conexao + ", somenteLeitura="
-				+ somenteLeitura + ", ativo=" + ativo + "]";
+		return "Conexao [id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", usuario_cadastro="
+				+ usuario_cadastro + ", endereco=" + endereco + ", database=" + database + ", usuario_conexao="
+				+ usuario_conexao + ", senha_conexao=" + senha_conexao + ", fabricante=" + fabricante + ", versao="
+				+ versao + ", driver=" + driver + ", somenteLeitura=" + somenteLeitura + ", ativo=" + ativo + "]";
 	}
 
 }
