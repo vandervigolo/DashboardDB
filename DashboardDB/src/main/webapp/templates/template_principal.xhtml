@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<h:outputStylesheet library="css" name="estilo.css" />
+	<h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
+</h:head>
+
+<h:body>
+	<div class="topnavusuario">
+		<ui:insert name="top_navegacao">
+			Topo navegação usuário
+		</ui:insert>
+	</div>
+	
+	<div class="header">
+		<ui:insert name="header">
+			<h1>DashboardDB</h1>
+			<p>Sua ferramenta para análise do seu banco de dados.</p>
+		</ui:insert>
+	</div>
+	
+	<div class="topnav">
+		<ui:insert name="top_navegacao_aplicacao">
+			Topo navegação aplicacao
+		</ui:insert>
+	</div>
+
+	<div class="row">
+		<div class="centercolumn">
+			<ui:insert name="row">
+				Coluna central de conteúdo
+			</ui:insert>
+		</div>
+	</div>
+
+	<div class="footer">
+		<ui:insert name="footer">
+			teste rodapé
+		</ui:insert>
+	</div>
+
+</h:body>
+</html>

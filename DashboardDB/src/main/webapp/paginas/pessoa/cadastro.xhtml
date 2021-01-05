@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:body>
+
+	<ui:composition template="/templates/template_cadastro.xhtml">
+
+		<ui:define name="row">
+			<h:form>
+				<p:panel id="panel" header="Cadastro Pessoas"
+					style="margin-bottom:10px;">
+					<p:messages id="messages" showDetail="true" closable="true" />
+					<h:panelGrid columns="2" cellpadding="5">
+						<h:outputLabel for="nome" value="Nome:" />
+						<p:inputText id="nome" required="true"
+							requiredMessage="Nome: Campo obrigatório!" />
+
+						<h:outputLabel for="endereco" value="Endereço:" />
+						<p:inputText id="endereco" required="true"
+							requiredMessage="Endereço: Campo obrigatório!" />
+
+						<h:outputLabel for="email" value="E-mail:" />
+						<p:inputText id="email" required="true"
+							requiredMessage="E-mail: Campo obrigatório!" />
+					</h:panelGrid>
+					<p:commandButton value="Salvar" update="panel" styleClass="ui-button-salvar"/>
+				</p:panel>
+
+				
+
+			</h:form>
+		</ui:define>
+
+	</ui:composition>
+</h:body>
+</html>

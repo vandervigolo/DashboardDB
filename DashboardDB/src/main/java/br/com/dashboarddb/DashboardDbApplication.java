@@ -23,11 +23,12 @@ public class DashboardDbApplication {
 	ServletRegistrationBean<FacesServlet> jsfServletRegistration (ServletContext servletContext) {
 		//spring boot only works if this is set
 		servletContext.setInitParameter("com.sun.faces.forceLoadConfiguration", Boolean.TRUE.toString());
-		
+		servletContext.setInitParameter("primefaces.FONT_AWESOME", "true");		
+		servletContext.setInitParameter("primefaces.THEME", "bootstrap");
 		//registration
 		ServletRegistrationBean<FacesServlet> srb = new ServletRegistrationBean<FacesServlet>();
 		srb.setServlet(new FacesServlet());
-		srb.setUrlMappings(Arrays.asList("*.jsp"));
+		srb.setUrlMappings(Arrays.asList("*.xhtml"));
 		srb.setLoadOnStartup(1);
 		return srb;
 	  }
@@ -35,8 +36,8 @@ public class DashboardDbApplication {
 	@Bean
 	  public ViewResolver viewResolver() {
 	    InternalResourceViewResolver irv = new InternalResourceViewResolver();
-	    irv.setPrefix("/WEB-INF/views/jsp/");
-	    irv.setSuffix(".jsp");
+	    irv.setPrefix("/");
+	    irv.setSuffix(".xhtml");
 
 	    return irv;
 
