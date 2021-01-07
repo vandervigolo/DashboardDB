@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import br.com.dashboarddb.models.database.Pessoa;
+import br.com.dashboarddb.util.MensagensUsuario;
 
 @Component(value = "pessoaBean")
 @Scope("session")
@@ -46,6 +47,10 @@ public class PessoaBean {
 		System.out.println("Teste, passei Aqui @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 
 		FacesContext.getCurrentInstance().getExternalContext().redirect(ENDERECO_CONSULTA);	
+	}
+	
+	public void cadastrar() {
+		MensagensUsuario.erroSistema("teste");
 	}
 
 
