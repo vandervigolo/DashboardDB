@@ -17,25 +17,20 @@
 </h:head>
 
 <h:body>
- 
-
-	<div class="topnavusuario">
-		<ui:insert name="top_navegacao">
-			Topo navegação usuário
-		</ui:insert>
-	</div>
 
 	<div class="header">
 		<ui:insert name="header">
 			<h1>DashboardDB</h1>
-			<p>Sua ferramenta para análise do seu banco de dados.</p>
+			<div class="topnavusuario">
+				Topo navegação usuário
+			</div>
 		</ui:insert>
 	</div>
 
 	<div class="topnav">
 		<ui:insert name="top_navegacao_aplicacao">
 			<h:form>
-				<p:menubar styleClass="menubar">
+				<p:menubar>
 					<p:submenu label="Administração" icon="pi pi-cog">
 							<p:menuitem value="Pessoa" icon="fa fa-user"
 								action="#{pessoaBean.consultarPessoa}" />
@@ -47,18 +42,18 @@
 	</div>
 
 
-	<div class="row">
+
 		<div class="centercolumn">
 			<ui:insert name="row">
 				Coluna central de conteúdo
 			</ui:insert>
 		</div>
-	</div>
+
 
 
 	<div class="footer">
 		<ui:insert name="footer">
-			teste rodapé
+			<p>teste rodapé, teste dedfeewfewrwe <br />teste rodapé, teste dedfeewfewrwe</p>
 		</ui:insert>
 	</div>
 
