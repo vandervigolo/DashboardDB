@@ -13,21 +13,21 @@
 
 		<ui:define name="row">
 			<h:form>
-				<p:panel id="panel" header="Consulta Pessoa">
+				<p:panel id="panel" header="#{msg['consultar_pessoa']}">
 
 					<h:panelGrid columns="2" width="100%"
 						columnClasses="colunaEsquerda,colunaDireita" >
 						<h:column>
-							<p:inputText placeholder="Nome" />
+							<p:inputText placeholder="#{msg['nome']}" />
 							<p:spacer height="20px" />
-							<p:commandButton value="Buscar" update="panel"
+							<p:commandButton value="#{msg['buscar']}" update="panel"
 								icon="fa fa-search" />
 						</h:column>
 						<h:column>
 							<p:commandButton update="panel" id="btn_novo"
 								icon="fa fa-plus-circle" styleClass="ui-button-salvar" action="#{pessoaBean.cadastroPessoa}"/>
 							<p:tooltip id="toolTip_btn_novo" for="btn_novo"
-								value="Novo registro" position="top" />
+								value="#{msg['novo_registro']}" position="top" />
 								
 						</h:column>
 					</h:panelGrid>
@@ -36,32 +36,32 @@
 					<p:dataTable var="pessoa" value="#{pessoaBean.pessoas}" rows="10"
 						paginator="true"
 						paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-						currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} registros"
+						currentPageReportTemplate="{startRecord}-{endRecord} #{msg['de']} {totalRecords} #{msg['registros']}"
 						rowsPerPageTemplate="5,10,15">
 
-						<p:column headerText="Nome">
+						<p:column headerText="#{msg['nome']}">
 							<h:outputText value="#{pessoa.nome}" />
 						</p:column>
 
-						<p:column headerText="Endereço">
+						<p:column headerText="#{msg['endereco']}">
 							<h:outputText value="#{pessoa.endereco}" />
 						</p:column>
 
-						<p:column headerText="E-mail">
+						<p:column headerText="#{msg['email']}">
 							<h:outputText value="#{pessoa.email}" />
 						</p:column>
 
-						<p:column headerText="Ação">
+						<p:column headerText="#{msg['acao']}">
 
 							<p:commandButton id="btn_editar" icon="fa fa-pencil"
 								styleClass="ui-button-editar" />
 							<p:tooltip id="toolTip_btn_editar" for="btn_editar"
-								value="Editar registro" position="top" />
+								value="#{msg['editar_registro']}" position="top" />
 							<p:spacer width="5px" />
 							<p:commandButton id="btn_excluir" icon="fa fa-minus-circle"
 								styleClass="ui-button-excluir" />
 							<p:tooltip id="toolTip_btn_excluir" for="btn_excluir"
-								value="Excluir registro" position="top" />
+								value="#{msg['excluir_registro']}" position="top" />
 						</p:column>
 
 
