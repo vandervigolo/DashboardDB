@@ -1,71 +1,77 @@
 @charset "UTF-8";
 
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 body {
-  font-family:  arial;
-  font-size: small;
-  background: #ffffff;
+	font-family: arial;
+	font-size: small;
+	background:#E8E8E8;
 }
 
-
 .header {
-  text-align: left;
-  background-color: DarkSlateBlue;
-  color: white;
+	text-align: left;
+	background-color: DarkSlateBlue;
+	color: white;
 }
 
 .header h1 {
-  padding-top: 10px;
-  padding-left: 10px;
-  font-size: 20px;
+	padding-top: 10px;
+	padding-left: 10px;
+	padding-bottom: 10px;
+	font-size: 20px;
 }
 
-
 .topnav {
-  background-color: #f1f1f1;
+	background-color: #f1f1f1;
 }
 
 .topnavusuario {
-  font-weight: bold;
-  text-align: right;
-  padding-right: 10px;
-  padding-bottom: 10px;
+	font-weight: bold;
+	text-align: right;
+	padding-right: 10px;
+	padding-bottom: 10px;
 }
 
+.centercolumn {
+	width: 100%;
+}
 
-.centercolumn {  
-  background-color: white;
-  float: left;
-  width: 100%;
+.senha {
+	width: 230px; /* Valor da Largura */
+	height: 100%; /* Valor da Altura */
+}
+
+.txt_senha {
+	font-size: 10px !important;
 }
 
 .footer {
-  text-align: center;
-  background: DarkSlateBlue;
-  color: white;
+	text-align: center;
+	background: DarkSlateBlue;
+	color: white;
 }
 
-	
-.ui-button-excluir{
-    background: red !important;
-    color: white !important;
+.ui-button-excluir {
+	background: red !important;
+	color: white !important;
 }
 
-.ui-button-editar{
-    background: orange !important;
-    color: white !important;
+.ui-button-editar {
+	background: orange !important;
+	color: white !important;
 }
 
-.ui-button-salvar{
-    background: #4e9a06 !important;
-    color: white !important;
+.ui-button-salvar {
+	background: #4e9a06 !important;
+	color: white !important;
 }
 
-.colunaDireita{ text-align: right; } 
+.colunaDireita {
+	text-align: right;
+}
 
-.colunaEsquerda{ text-align: left; }
-
-
+.colunaEsquerda {
+	text-align: left;
+}

@@ -18,21 +18,18 @@
 					<h:panelGrid columns="2" cellpadding="5">
 						<h:outputLabel for="nome" value="#{msg['nome']}:" />
 						<p:inputText id="nome" required="true"
-							requiredMessage="Nome: Campo obrigatório!" />
+							requiredMessage="#{msg['nome']}: #{msg['requerido']}" />
 
 						<h:outputLabel for="endereco" value="#{msg['endereco']}:" />
 						<p:inputText id="endereco" required="true"
-							requiredMessage="Endereço: Campo obrigatório!" />
+							requiredMessage="#{msg['endereco']}: #{msg['requerido']}" />
 
 						<h:outputLabel for="email" value="#{msg['email']}:" />
 						<p:inputText id="email" required="true"
-							requiredMessage="E-mail: Campo obrigatório!" />
+							requiredMessage="#{msg['email']}: #{msg['requerido']}" />
 					</h:panelGrid>
 					<p:commandButton value="#{msg['salvar']}" action="#{pessoaBean.cadastrar}" update="panel" styleClass="ui-button-salvar"/>
 				</p:panel>
-
-				
-
 			</h:form>
 		</ui:define>
 
