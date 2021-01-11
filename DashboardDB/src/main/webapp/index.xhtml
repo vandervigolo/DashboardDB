@@ -8,20 +8,39 @@
 
 <h:body>
 
-	<ui:composition template="/templates/template_cadastro.xhtml">
-
-		<ui:define name="top_navegacao">
-			
-			<h:form>
-				<p:inputText style="margin:1px 10px 1px 1px;" placeholder="Login" />
-				<p:password placeholder="Senha" style="margin:1px 10px 1px 1px;" />
-				<p:commandButton value="Entrar" icon="pi pi-sign-in" />
-			</h:form>
-		</ui:define>
-
+	<ui:composition template="/templates/template_inicial.xhtml">
 
 		<ui:define name="row">
-			Página Index
+			<center>
+				<div class="senha">
+
+					<h:form>
+					
+						<p:panel id="basic" header="#{msg['login']}"
+							style="margin-bottom:20px">
+							
+							<h:panelGrid columns="1" >
+								<p:inputText id="login" 
+									 required="true" placeholder="#{msg['login']}"
+									requiredMessage="#{msg['login']}: #{msg['requerido']}" />
+								<p:message for="login" styleClass="txt_senha"  display="text"/>
+								
+								<p:password id="senha" placeholder="#{msg['senha']}" required="true"
+									requiredMessage="#{msg['senha']}: #{msg['requerido']}" />
+								<p:message for="senha" styleClass="txt_senha" display="text"/>
+								
+								<p:commandButton value="#{msg['entrar']}" action="/paginas/pessoa/consulta.xhtml" update="@form" icon="pi pi-sign-in" />
+							</h:panelGrid>
+							
+							<f:facet name="footer">
+								<h:outputText value="#{msg['bem_vindo']}" />
+							</f:facet>
+						</p:panel>
+					</h:form>
+
+				</div>
+			</center>
+
 		</ui:define>
 
 	</ui:composition>

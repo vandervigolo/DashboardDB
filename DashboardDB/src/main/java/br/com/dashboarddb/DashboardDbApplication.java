@@ -23,8 +23,9 @@ public class DashboardDbApplication {
 	ServletRegistrationBean<FacesServlet> jsfServletRegistration (ServletContext servletContext) {
 		//spring boot only works if this is set
 		servletContext.setInitParameter("com.sun.faces.forceLoadConfiguration", Boolean.TRUE.toString());
-		servletContext.setInitParameter("primefaces.FONT_AWESOME", "true");		
+		servletContext.setInitParameter("primefaces.FONT_AWESOME", Boolean.TRUE.toString());		
 		servletContext.setInitParameter("primefaces.THEME", "bootstrap");
+		servletContext.setInitParameter("javax.faces.FACELETS_SKIP_COMMENTS", Boolean.TRUE.toString());
 		//registration
 		ServletRegistrationBean<FacesServlet> srb = new ServletRegistrationBean<FacesServlet>();
 		srb.setServlet(new FacesServlet());
