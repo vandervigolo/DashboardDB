@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,7 +22,17 @@ public class PessoaService {
 	private RepPessoa repPessoa;
 	
 	public List<PessoaVw> PessoasVw(){
-		List<Pessoa> pessoas = repPessoa.findAll();
+		List<Pessoa> pessoas = repPessoa.findAllByOrderByNome();
+		List<PessoaVw> pessoasVw = new ArrayList<PessoaVw>();
+		for (Pessoa pessoa : pessoas) {
+			pessoasVw.add(new PessoaVw(pessoa));
+		}
+		return pessoasVw;
+	}
+	
+	public List<PessoaVw> PessoasVw(String nome){
+		//List<Pessoa> pessoas = repPessoa.findByNomeContainsIgnoreCaseOrderByNome(nome);
+		List<Pessoa> pessoas = repPessoa.findByNomeContainsIgnoreCase(nome, Sort.by(Sort.Direction.ASC, "nome"));
 		List<PessoaVw> pessoasVw = new ArrayList<PessoaVw>();
 		for (Pessoa pessoa : pessoas) {
 			pessoasVw.add(new PessoaVw(pessoa));

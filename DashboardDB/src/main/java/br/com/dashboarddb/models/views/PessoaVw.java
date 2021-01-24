@@ -1,6 +1,7 @@
 package br.com.dashboarddb.models.views;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import br.com.dashboarddb.models.database.Pessoa;
 import br.com.dashboarddb.models.database.Usuario;
@@ -15,11 +16,11 @@ public class PessoaVw {
 	private Boolean ativo;
 	private Usuario usuario;
 
-	
-	public PessoaVw() {	}
+	public PessoaVw() {
+	}
 
-	public PessoaVw(Long id, String nome, String endereco, String email, 
-					LocalDateTime dataCadastro, Boolean ativo, Usuario usuario) {
+	public PessoaVw(Long id, String nome, String endereco, String email, LocalDateTime dataCadastro, Boolean ativo,
+			Usuario usuario) {
 		this.id = id;
 		this.nome = nome;
 		this.endereco = endereco;
@@ -28,7 +29,7 @@ public class PessoaVw {
 		this.ativo = ativo;
 		this.usuario = usuario;
 	}
-	
+
 	public PessoaVw(Pessoa pessoa) {
 		this.id = pessoa.getId();
 		this.nome = pessoa.getNome();
@@ -94,5 +95,8 @@ public class PessoaVw {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	
+
+	public String getDataFormatada() {
+		return dataCadastro.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
+	}
 }

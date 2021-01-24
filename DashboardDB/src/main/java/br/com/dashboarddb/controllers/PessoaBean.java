@@ -21,13 +21,9 @@ public class PessoaBean {
 
 	@Autowired
 	private PessoaService pessoaService;
-
 	private List<PessoaVw> pessoas;
-
 	private PessoaVw pessoaVw;
-
-	public PessoaBean() {
-	}
+	private String buscaNome;
 
 	public void cadastroPessoa() throws IOException {
 
@@ -37,7 +33,11 @@ public class PessoaBean {
 
 	public void consultarPessoa() throws IOException {
 
-		pessoas = pessoaService.PessoasVw();
+		if (buscaNome == null) {
+			pessoas = pessoaService.PessoasVw();
+		} else {
+			pessoas = pessoaService.PessoasVw(buscaNome);
+		}
 		FacesContext.getCurrentInstance().getExternalContext().redirect(ENDERECO_CONSULTA);
 	}
 
@@ -60,6 +60,14 @@ public class PessoaBean {
 
 	public void setPessoaVw(PessoaVw pessoaVw) {
 		this.pessoaVw = pessoaVw;
+	}
+
+	public String getBuscaNome() {
+		return buscaNome;
+	}
+
+	public void setBuscaNome(String buscaNome) {
+		this.buscaNome = buscaNome;
 	}
 
 }
