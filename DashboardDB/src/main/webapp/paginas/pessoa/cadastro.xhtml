@@ -17,15 +17,15 @@
 					<p:messages id="messages" showDetail="true" closable="true" />
 					<h:panelGrid columns="2" cellpadding="5">
 						<h:outputLabel for="nome" value="#{msg['nome']}:" />
-						<p:inputText id="nome" required="true"
+						<p:inputText id="nome" required="true" value="#{pessoaBean.pessoaVw.nome}"
 							requiredMessage="#{msg['nome']}: #{msg['requerido']}" />
 
 						<h:outputLabel for="endereco" value="#{msg['endereco']}:" />
-						<p:inputText id="endereco" required="true"
+						<p:inputText id="endereco" required="true" value="#{pessoaBean.pessoaVw.endereco}"
 							requiredMessage="#{msg['endereco']}: #{msg['requerido']}" />
 
 						<h:outputLabel for="email" value="#{msg['email']}:" />
-						<p:inputText id="email" required="true"
+						<p:inputText id="email" required="true" value="#{pessoaBean.pessoaVw.email}"
 							requiredMessage="#{msg['email']}: #{msg['requerido']}" />
 					</h:panelGrid>
 					<p:commandButton value="#{msg['salvar']}" action="#{pessoaBean.cadastrar}" update="panel" styleClass="ui-button-salvar"/>

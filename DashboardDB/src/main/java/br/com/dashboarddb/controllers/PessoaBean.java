@@ -1,69 +1,65 @@
 package br.com.dashboarddb.controllers;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.context.FacesContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import br.com.dashboarddb.models.database.Pessoa;
-import br.com.dashboarddb.util.MensagensUsuario;
+import br.com.dashboarddb.models.views.PessoaVw;
+import br.com.dashboarddb.services.PessoaService;
 
 @Component(value = "pessoaBean")
 @Scope("session")
 public class PessoaBean {
-	
+
 	private static final String ENDERECO_CADASTRO = "/paginas/pessoa/cadastro.xhtml";
 	private static final String ENDERECO_CONSULTA = "/paginas/pessoa/consulta.xhtml";
-	
-	private List<Pessoa> pessoas;
-	
-	
 
+	@Autowired
+	private PessoaService pessoaService;
+
+	private List<PessoaVw> pessoas;
+
+	private PessoaVw pessoaVw;
 
 	public PessoaBean() {
-		pessoas = new ArrayList<Pessoa>();
-		Pessoa pessoa = new Pessoa();
-		pessoa.setEmail("teste@teste.com.br");
-		pessoa.setNome("fulano");
-		pessoa.setEndereco("ruas do fulanino que temd que der bem grande, ruas do fulanino que temd que der bem grande");
-		pessoas.add(pessoa);
 	}
-
 
 	public void cadastroPessoa() throws IOException {
 
-		System.out.println("Teste, passei Aqui @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-
-		FacesContext.getCurrentInstance().getExternalContext().redirect(ENDERECO_CADASTRO);	
+		pessoaVw = new PessoaVw();
+		FacesContext.getCurrentInstance().getExternalContext().redirect(ENDERECO_CADASTRO);
 	}
-	
 
 	public void consultarPessoa() throws IOException {
 
-		System.out.println("Teste, passei Aqui @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-
-		FacesContext.getCurrentInstance().getExternalContext().redirect(ENDERECO_CONSULTA);	
-	}
-	
-	public void cadastrar() {
-		MensagensUsuario.erroSistema("teste");
+		pessoas = pessoaService.PessoasVw();
+		FacesContext.getCurrentInstance().getExternalContext().redirect(ENDERECO_CONSULTA);
 	}
 
+	public void cadastrar() throws IOException {
+		pessoaService.salvar(pessoaVw);
+		consultarPessoa();
+	}
 
-	public List<Pessoa> getPessoas() {
+	public List<PessoaVw> getPessoas() {
 		return pessoas;
 	}
 
-
-	public void setPessoas(List<Pessoa> pessoas) {
+	public void setPessoas(List<PessoaVw> pessoas) {
 		this.pessoas = pessoas;
 	}
-	
-	
 
+	public PessoaVw getPessoaVw() {
+		return pessoaVw;
+	}
+
+	public void setPessoaVw(PessoaVw pessoaVw) {
+		this.pessoaVw = pessoaVw;
+	}
 
 }

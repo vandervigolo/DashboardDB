@@ -29,7 +29,7 @@
 									requiredMessage="#{msg['senha']}: #{msg['requerido']}" />
 								<p:message for="senha" styleClass="txt_senha" display="text"/>
 								
-								<p:commandButton value="#{msg['entrar']}" action="/paginas/pessoa/consulta.xhtml" update="@form" icon="pi pi-sign-in" />
+								<p:commandButton value="#{msg['entrar']}" action="#{pessoaBean.consultarPessoa}" update="@form" icon="pi pi-sign-in" />
 							</h:panelGrid>
 							
 							<f:facet name="footer">
