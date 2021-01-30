@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import br.com.dashboarddb.models.views.PessoaVw;
 import br.com.dashboarddb.services.PessoaService;
+import br.com.dashboarddb.util.MensagensUsuario;
 
 @Component(value = "pessoaBean")
 @Scope("session")
@@ -18,6 +19,7 @@ public class PessoaBean {
 
 	private static final String ENDERECO_CADASTRO = "/paginas/pessoa/cadastro.xhtml";
 	private static final String ENDERECO_CONSULTA = "/paginas/pessoa/consulta.xhtml";
+	private static final String ENDERECO_EDICAO = "/paginas/pessoa/editar.xhtml";
 
 	@Autowired
 	private PessoaService pessoaService;
@@ -40,10 +42,28 @@ public class PessoaBean {
 		}
 		FacesContext.getCurrentInstance().getExternalContext().redirect(ENDERECO_CONSULTA);
 	}
+	
+	public void editarPessoa(PessoaVw pessoaVw) throws IOException {
+		this.pessoaVw = pessoaVw;
+		FacesContext.getCurrentInstance().getExternalContext().redirect(ENDERECO_EDICAO);
+	}
+	
+	public void excluirPessoa(PessoaVw pessoaVw) {
+		
+	}
 
-	public void cadastrar() throws IOException {
-		pessoaService.salvar(pessoaVw);
-		consultarPessoa();
+	public void salvar() {
+		try {
+			pessoaService.salvar(pessoaVw);
+			consultarPessoa();
+			MensagensUsuario.informacao("Operação realizada com sucesso!");
+		} catch (IOException e) {
+			e.printStackTrace();
+			MensagensUsuario.erroSistema("Ocorreu um erro de sistema!");
+		} catch (Exception e) {
+			e.printStackTrace();
+			MensagensUsuario.erro("Ocorreu um erro!");
+		}
 	}
 
 	public List<PessoaVw> getPessoas() {

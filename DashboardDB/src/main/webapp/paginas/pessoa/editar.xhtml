@@ -25,6 +25,9 @@
 						<h:outputLabel for="email" value="#{msg['email']}:" />
 						<p:inputText id="email" required="true" value="#{pessoaBean.pessoaVw.email}"
 									 requiredMessage="#{msg['email']}: #{msg['requerido']}" />
+						<h:outputLabel for="ativo" value="#{msg['ativo']}:" />
+						<p:inputSwitch id="ativo" required="true" value="#{pessoaBean.pessoaVw.ativo}"
+									 requiredMessage="#{msg['ativo']}: #{msg['requerido']}" />
 					</h:panelGrid>
 					<p:commandButton value="#{msg['salvar']}" action="#{pessoaBean.salvar}" 
 									 update="panel" styleClass="ui-button-salvar"/>

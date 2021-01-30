@@ -21,6 +21,10 @@ public class PessoaService {
 	@Autowired
 	private RepPessoa repPessoa;
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public List<PessoaVw> PessoasVw(){
 		List<Pessoa> pessoas = repPessoa.findAllByOrderByNome();
 		List<PessoaVw> pessoasVw = new ArrayList<PessoaVw>();

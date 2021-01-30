@@ -49,13 +49,13 @@
 							<h:outputText value="Sim" rendered="#{pessoa.ativo}"/>
 							<h:outputText value="Não" rendered="#{!pessoa.ativo}"/>
 						</p:column>
-						<p:column headerText="#{msg['acao']}"  style="text-align:center;">
-							<p:commandButton id="btn_editar" value="#{pessoa.id}" action="#{pessoaBean.editarPessoa}"
+						<p:column headerText="#{msg['acao']}" style="text-align:center;">
+							<p:commandButton id="btn_editar" action="#{pessoaBean.editarPessoa(pessoa)}"
 											 icon="fa fa-pencil" styleClass="ui-button-editar" />
 							<p:tooltip id="toolTip_btn_editar" for="btn_editar" value="#{msg['editar_registro']}"
 									   position="top" />
 							<p:spacer width="5px" />
-							<p:commandButton id="btn_excluir" value="#{pessoa.id}" action="#{pessoaBean.excluirPessoa}"
+							<p:commandButton id="btn_excluir" action="#{pessoaBean.excluirPessoa(pessoa)}" onclick="return confirm('Deseja fazer a Exclusão ?');  return false"
 											 icon="fa fa-minus-circle" styleClass="ui-button-excluir" />
 							<p:tooltip id="toolTip_btn_excluir" for="btn_excluir" value="#{msg['excluir_registro']}"
 								 	   position="top" />
