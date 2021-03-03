@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import br.com.DashboardDB.Models.Database.Pessoa;
+import br.com.DashboardDB.Repositories.Projections.PessoaNomeEmail;
 
 @Repository
 public interface RepPessoa extends JpaRepository<Pessoa, Long>{
@@ -30,4 +31,6 @@ public interface RepPessoa extends JpaRepository<Pessoa, Long>{
 	public List<Pessoa> findByNomeContainsIgnoreCase(String nome, Sort ordem);
 	public List<Pessoa> findFirst20ByNomeContainsIgnoreCase(String nome);
 	public List<Pessoa> findFirst20ByNomeContainsIgnoreCaseOrderByNome(String nome);
+	
+	public List<PessoaNomeEmail> findByNomeContains(String nome);
 }

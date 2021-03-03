@@ -80,13 +80,13 @@
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<div class="collapse navbar-collapse" id="main_nav" sec:authorize="isAutenticated()">
+			<div class="collapse navbar-collapse" id="main_nav">
 				<ul class="navbar-nav">
 					<li class="nav-item active"><a class="nav-link" href="/DashboardDB/">Início</a></li>
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Cadastros Básicos </a>
 						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" th:href="@{/Pais/}">Países</a></li>
+							<li><a class="dropdown-item" th:href="@{/Pais/}" >Países</a></li>
 							<li><a class="dropdown-item" th:href="@{/Estado/}">Estados</a></li>
 							<li><a class="dropdown-item" th:href="@{/Cidade/}">Cidades</a></li>
 							<li><a class="dropdown-item" th:href="@{/Bairro/}">Bairros</a></li>
