@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head th:replace="Layout/template_principal :: HeadSection">
+<body>
+	<div th:replace="Layout/template_principal :: cabecalho"></div>
+
+	<div class="container-fluid">
+		<div class="row">
+			<nav th:replace="Layout/template_principal :: menu"></nav>
+
+
+			<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+				<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+
+					<h1 class="h2">Nome Funcionalidade</h1>
+					<div class="btn-toolbar mb-2 mb-md-0">
+						<div class="btn-group me-2">
+							<button type="button" class="btn btn-info"><i class="bi-plus" th:text="#{novo}"> </i></button>
+						</div>
+					</div>
+
+				</div>
+				restante do conteúdo
+			</main>
+
+		</div>
+	</div>
+
+
+</body>
+</html>

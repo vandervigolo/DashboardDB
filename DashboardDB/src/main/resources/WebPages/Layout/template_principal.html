@@ -1,0 +1,62 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="HeadSection">
+<meta charset="ISO-8859-1" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="content-language" content="pt-br, en-US" />
+<meta name="robots" content="none,noindex,nofollow">
+<meta name="googlebot" content="noarchive">
+<meta name="rating" content="general" />
+<meta name="generator" content="Eclipse" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link type="text/css" rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<link type="text/css" rel="stylesheet" th:href="@{/css/dashboard.css}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+<script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+
+
+<title th:text="#{nomeSistema}"></title>
+</head>
+
+<body>
+
+	<header th:fragment="cabecalho"
+		class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+
+		<a href="#" class="navbar-brand col-md-3 col-lg-2 me-0 px-3" th:text="#{nomeSistema}"> </a>
+		<ul class="navbar-nav px-3">
+			<li class="nav-item text-nowrap"><a href="#" class="nav-link"> <i class="bi bi-door-closed" th:text="#{sair}"></i></a></li>
+		</ul>
+	</header>
+
+
+
+
+	<nav id="sidebarMenu" th:fragment="menu"
+		class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+		<div class="position-sticky pt-3">
+			<ul class="nav flex-column">
+				<li class="nav-item">
+					<a href="#" class="nav-link active" th:text="#{administracao}"> </a>
+				</li>
+				<li class="nav-item"> <a href="#" class="nav-link"> <i class="bi bi-server" th:text="#{conexoes}"></i> </a></li>
+				<li class="nav-item"><a href="#" class="nav-link"> <i class="bi bi-people" th:text="#{usuarios}"></i>
+				</a></li>
+			</ul>
+
+			<h6
+				class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+				<a href="#" class="link-secondary" > Relatórios </a>
+			</h6>
+
+		</div>
+	</nav>
+
+
+</body>
+</html>
